@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<title>Plugin BildText</title>
+	<meta charset="utf-8">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+	;(function($){
+	$.fn.showAlt=function(options){
+		var settings = $.extend({
+			position:'after'
+		}, options);
+	this.each(function(){
+	var bilder
+	bilder = $('img').html();
+	bilder.on('click',function(){
+		var text = bilder.attr('alt').html();
+		if ( settings.position == 'after' ) {
+			$( this ).append(text);
+		}
+		if ( settings.position == 'before' ) {
+			$( this ).prepend( text );}
+
+	return this;
+});//onclick
+});//each
+}//showAlt
+});//function($)
+$(document).ready=function(){
+$('#meinbild').showAlt({position:'after'})
+}//test plugin
+	</script>
+	<style>
+
+	</style>
+</head>
+<body>
+
+<img src="bmi_tabelle.gif" id="meinbild" width="386" height="282" alt="Das ist ein Bild"/>
+
+</body>
+</html>
